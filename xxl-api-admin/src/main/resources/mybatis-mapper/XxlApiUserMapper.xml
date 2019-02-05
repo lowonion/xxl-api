@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
-	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+		"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.xxl.api.admin.dao.IXxlApiUserDao">
-	
+
 	<resultMap id="XxlApiUser" type="com.xxl.api.admin.core.model.XxlApiUser" >
 		<result column="id" property="id" />
 		<result column="username" property="userName" />
-	    <result column="password" property="password" />
-	    <result column="type" property="type" />
+		<result column="password" property="password" />
+		<result column="token_value" property="tokenValue" />
+		<result column="type" property="type" />
 		<result column="permission_biz" property="permissionBiz" />
 	</resultMap>
 
@@ -16,6 +17,7 @@
 		t.username,
 		t.password,
 		t.type,
+		t.token_value,
 		t.permission_biz
 	</sql>
 
@@ -23,11 +25,13 @@
 		INSERT INTO xxl_api_user (
 			userName,
 			password,
+			token_value,
 			`type`,
 			permission_biz
 		) VALUES (
 			#{userName},
 			#{password},
+			#{tokenValue},
 			#{type},
 			#{permissionBiz}
 		);
@@ -37,6 +41,7 @@
 		UPDATE xxl_api_user
 		SET
 			password = #{password},
+			token_value = #{tokenValue},
 			`type` = #{type},
 			permission_biz = #{permissionBiz}
 		WHERE id = #{id}

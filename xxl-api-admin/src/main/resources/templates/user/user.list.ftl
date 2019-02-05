@@ -101,6 +101,10 @@
                         <div class="col-sm-10"><input type="text" class="form-control" name="password" placeholder="请输入“登录密码”" maxlength="50" value="123456" ></div>
                     </div>
                     <div class="form-group">
+                        <label for="lastname" class="col-sm-2 control-label">token<font color="red">*</font></label>
+                        <div class="col-sm-10"><input type="text" class="form-control" name="token_value" placeholder="请输入token" maxlength="100" ></div>
+                    </div>
+                    <div class="form-group">
                         <label for="lastname" class="col-sm-2 control-label">用户类型<font color="red">*</font></label>
                         <div class="col-sm-10">
                             <input type="radio" name="type" value="0" checked >普通用户
@@ -143,6 +147,10 @@
                                 <input type="text" class="form-control" name="password" placeholder="为空则不更新密码" maxlength="50" readonly >
                             </div>
                         </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="lastname" class="col-sm-2 control-label">token<font color="black">*</font></label>
+                        <div class="col-sm-10"><input type="text" class="form-control" name="tokenValue" placeholder="请输入token" maxlength="100" ></div>
                     </div>
                     <div class="form-group">
                         <label for="lastname" class="col-sm-2 control-label">用户类型<font color="red">*</font></label>

@@ -44,6 +44,20 @@ public class XxlApiUserController {
 		return "user/user.list";
 	}
 
+	@RequestMapping("/pageInfo")
+	@ResponseBody
+	@PermessionLimit(superUser = true)
+	public Map<String, Object> pageInfo(HttpServletRequest request, XxlApiUser xxlApiUser) {
+		// page list
+		xxlApiUserDao.findById(xxlApiUser.getId());
+		XxlApiUser existUser = xxlApiUserDao.findByUserName(xxlApiUser.getUserName());
+
+		// package result
+		Map<String, Object> maps = new HashMap<String, Object>();
+		maps.put("data", existUser);  					// 用户详情
+		return maps;
+	}
+
 	@RequestMapping("/pageList")
 	@ResponseBody
 	@PermessionLimit(superUser = true)
@@ -112,6 +126,12 @@ public class XxlApiUserController {
 			// passowrd md5
 			String md5Password = DigestUtils.md5DigestAsHex(xxlApiUser.getPassword().getBytes());
 			existUser.setPassword(md5Password);
+		}
+		if (StringUtils.isNotBlank(xxlApiUser.getTokenValue())) {
+			if (!(xxlApiUser.getTokenValue().length()>=4 && xxlApiUser.getTokenValue().length()<=100)) {
+				return new ReturnT<String>(ReturnT.FAIL.getCode(), "token长度限制为4~100");
+			}
+			existUser.setTokenValue(xxlApiUser.getTokenValue());
 		}
 		existUser.setType(xxlApiUser.getType());
 

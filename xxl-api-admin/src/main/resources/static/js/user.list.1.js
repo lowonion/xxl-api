@@ -56,6 +56,7 @@ $(function() {
 							' userName="'+ row.userName +'" '+
 							' password="'+ row.password +'" '+
 							' type="'+ row.type +'" '+
+                            ' tokenValue="'+ row.tokenValue +'" '+
                             ' permissionBiz="'+ row.permissionBiz +'" '+
 							'>'+
 							'<button class="btn btn-warning btn-xs update" >编辑</button>  '+
@@ -160,6 +161,10 @@ $(function() {
 			password : {
             	required : true,
                 rangelength: [4, 50]
+            },
+            token_value : {
+                required : true,
+                rangelength: [4, 100]
             }
         }, 
         messages : {
@@ -170,6 +175,10 @@ $(function() {
 			password : {
             	required :"请输入密码",
                 rangelength : "密码长度限制为4~50"
+            },
+            token_value : {
+                required :"请输入token",
+                rangelength : "token长度限制为4~100"
             }
         },
 		highlight : function(element) {  
@@ -229,6 +238,7 @@ $(function() {
 		$("#updateModal .form input[name='id']").val($(this).parent('p').attr("id"));
 		$("#updateModal .form input[name='userName']").val($(this).parent('p').attr("userName"));
 		$("#updateModal .form input[name='type']").eq($(this).parent('p').attr("type")).click();
+        $("#updateModal .form input[name='tokenValue']").val($(this).parent('p').attr("tokenValue"));
 
         $("#updateModal .form input[name='passwordInput']").prop('checked', false);
         $("#updateModal .form input[name='password']").val( '' );
@@ -245,12 +255,20 @@ $(function() {
             password : {
                 required : true,
                 rangelength: [4, 50]
+            },
+            tokenValue : {
+                required : true,
+                rangelength: [4, 100]
             }
         },
         messages : {
             password : {
                 required :"请输入密码",
                 rangelength : "密码长度限制为4~50"
+            },
+            tokenValue : {
+                required :"请输入token",
+                rangelength : "token长度限制为4~100"
             }
         },
 		highlight : function(element) {

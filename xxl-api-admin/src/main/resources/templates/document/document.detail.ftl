@@ -93,6 +93,18 @@
                                 <span style="color: #00a65a;">${document.name}</span>
                             </div>
                         </div>
+                        <div class="form-group">
+                            <label class="col-sm-1">开发人员</label>
+                            <div class="col-sm-5">
+                                <span style="color: #00a65a;">${document.devName}</span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-1">业务人员</label>
+                            <div class="col-sm-5">
+                                <span style="color: #00a65a;">${document.bizmanName}</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
